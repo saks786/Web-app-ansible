@@ -1,0 +1,30 @@
+- name: Deploy Web Application using Ansible
+  hosts: web
+  become: yes
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Copy web application files
+      copy:
+        src: files/index.html
+        dest: "{{ app_root }}/index.html"
+
+    - name: Deploy Nginx configuration using template
+      template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/sites-available/default
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
