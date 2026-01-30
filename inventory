@@ -1,2 +1,2 @@
 [web]
-140.245.14.94 ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/.ssh/ssh-key-2026-01-09.key
+140.245.14.94 ansible_user=ubuntu ansible_ssh_private_key_file=/home/saksham_rana/.ssh/ssh-key-2026-01-09.key
